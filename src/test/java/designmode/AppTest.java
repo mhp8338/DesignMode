@@ -1,4 +1,4 @@
-package DesignMode;
+package designmode;
 
 import static org.junit.Assert.assertTrue;
 

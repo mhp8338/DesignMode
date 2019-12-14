@@ -1,4 +1,4 @@
-package DesignMode;
+package designmode;
 
 /**
  * Hello world!
