@@ -13,6 +13,9 @@ public class LazySingleton {
      * 私有构造器
      */
     private LazySingleton(){
+        if(Instance != null){
+            throw new RuntimeException("单例禁止反射调用");
+        }
 
     }
 

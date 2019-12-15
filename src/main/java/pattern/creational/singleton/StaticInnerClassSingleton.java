@@ -8,7 +8,9 @@ public class StaticInnerClassSingleton {
      * 静态构造方法
      */
     private StaticInnerClassSingleton(){
-
+        if(InnerClass.INSTANCE != null){
+            throw new RuntimeException("单例构造器禁止反射调用");
+        }
     }
 
     /**

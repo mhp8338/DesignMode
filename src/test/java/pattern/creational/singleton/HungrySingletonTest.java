@@ -3,6 +3,8 @@ package pattern.creational.singleton;
 import org.junit.Test;
 
 import java.io.*;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 
 public class HungrySingletonTest {
 
@@ -25,9 +27,26 @@ public class HungrySingletonTest {
         System.out.println(instance == newInstance);
     }
 
-    @Test
-    public void reflection_attack_test(){
+    @Test(expected = RuntimeException.class)
+    public void reflection_attack_test() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
+        /**
+         * 获取反射的类
+         */
+        Class objectClass = HungrySingleton.class;
+        /**
+         * 获取构造器
+         */
+        Constructor constructor = objectClass.getDeclaredConstructor();
+        constructor.setAccessible(true);
 
+        /**
+         * 获取实例
+         */
+        HungrySingleton instance = (HungrySingleton) constructor.newInstance();
+        HungrySingleton newInstance = HungrySingleton.getInstance();
+
+        System.out.println(instance);
+        System.out.println(newInstance);
     }
 
 

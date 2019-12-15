@@ -14,6 +14,9 @@ public class LazyDoubleCheckSingleton {
      * 私有构造器
      */
     private LazyDoubleCheckSingleton(){
+        if (Instance != null){
+            throw new RuntimeException("单例模式禁止反射调用");
+        }
 
     }
 
